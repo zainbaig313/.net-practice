@@ -1,0 +1,98 @@
+@Practice_HostAddress = http://localhost:5059
+
+GET {{Practice_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+POST {{Practice_HostAddress}}/weatherforecast
+Content-Type: application/json
+
+{
+  "date": "2026-07-22T00:00:00",
+  "temprature": 30,
+  "summary": "Hot"
+}
+
+###
+GET {{Practice_HostAddress}}/weatherforecast/search?q=hello&page=3
+
+
+###
+GET {{Practice_HostAddress}}/weatherforecast/product/-0.000
+
+
+
+
+
+###
+GET {{Practice_HostAddress}}/api/item
+
+
+###
+GET {{Practice_HostAddress}}/api/item/1
+
+###
+POST {{Practice_HostAddress}}/api/item
+Content-Type: application/json
+
+{
+  "name": "mobile",
+  "des": "iphone"
+  
+}
+
+###
+PUT  {{Practice_HostAddress}}/api/item/2
+Content-Type: application/json
+
+{
+  "name": "mobile",
+  "des": "iphone 16"
+  
+}
+
+###
+DELETE  {{Practice_HostAddress}}/api/item/2
+
+
+
+
+
+
+
+##############################
+
+###
+GET {{Practice_HostAddress}}/api/info
+
+###
+GET {{Practice_HostAddress}}/api/info/1
+
+###
+POST {{Practice_HostAddress}}/api/info
+Content-Type: application/json
+
+{
+  "regNo": "1",
+  "name": "jk",
+  "class" : "9th"
+  
+}
+
+###
+PUT  {{Practice_HostAddress}}/api/info/1
+Content-Type: application/json
+
+{
+  "regNo": "11",
+  "name": "jkud",
+  "class" : "3rd"
+  
+}
+
+###
+DELETE  {{Practice_HostAddress}}/api/info/11
+
+
+###
+GET {{Practice_HostAddress}}/weatherforecast/services

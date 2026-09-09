@@ -1,0 +1,17 @@
+
+GET http://localhost:5269
+
+###
+GET http://localhost:5269/users/1/blogs/my first blog
+
+###
+GET http://localhost:5269/productId/-1
+
+###
+GET http://localhost:5269/username/
+
+###
+GET http://localhost:5269/filename/hello/c/22/-1/lkdlksad
+
+###
+GET http://localhost:5269/search?q=dotnet&page=2

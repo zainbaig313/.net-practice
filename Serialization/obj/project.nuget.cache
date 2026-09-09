@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Z3yN+UnaCcc=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ZAIN BAIG\\Desktop\\.net practice\\Serialization\\Serialization.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ZAIN BAIG\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.7\\microsoft.aspnetcore.openapi.9.0.7.nupkg.sha512",
+    "C:\\Users\\ZAIN BAIG\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

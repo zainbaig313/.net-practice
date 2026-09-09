@@ -1,0 +1,17 @@
+C:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\bin\Debug\net9.0\ProductApp.exe
+C:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\bin\Debug\net9.0\ProductApp.deps.json
+C:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\bin\Debug\net9.0\ProductApp.runtimeconfig.json
+C:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\bin\Debug\net9.0\ProductApp.dll
+C:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\bin\Debug\net9.0\ProductApp.pdb
+C:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\obj\Debug\net9.0\ProductApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\obj\Debug\net9.0\ProductApp.AssemblyInfoInputs.cache
+C:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\obj\Debug\net9.0\ProductApp.AssemblyInfo.cs
+C:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\obj\Debug\net9.0\ProductApp.csproj.CoreCompileInputs.cache
+C:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\obj\Debug\net9.0\ProductApp.dll
+C:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\obj\Debug\net9.0\refint\ProductApp.dll
+C:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\obj\Debug\net9.0\ProductApp.pdb
+C:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\obj\Debug\net9.0\ProductApp.genruntimeconfig.cache
+C:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\obj\Debug\net9.0\ref\ProductApp.dll
+c:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\bin\Debug\net9.0\Newtonsoft.Json.dll
+c:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\obj\Debug\net9.0\ProductApp.csproj.AssemblyReference.cache
+c:\Users\ZAIN BAIG\Desktop\.net practice\ProductApp\obj\Debug\net9.0\ProductApp.csproj.Up2Date

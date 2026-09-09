@@ -1,0 +1,34 @@
+@MyFirstApi_HostAddress = http://localhost:5174
+
+GET {{MyFirstApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+GET {{MyFirstApi_HostAddress}}/Blog/
+Accept: application/json
+
+###
+POST  {{MyFirstApi_HostAddress}}/Blog/
+Content-Type: application/json
+
+
+{
+    "title": "my third blog ",
+    "body": "this is my third blog "
+}
+
+
+###
+DELETE  {{MyFirstApi_HostAddress}}/Blog/2
+Accept: application/json
+
+
+###
+PUT {{MyFirstApi_HostAddress}}/Blog/-1
+Content-Type: application/json
+
+
+{
+    "title": "my updated blog ",
+    "body": "this is my updated blog "
+}

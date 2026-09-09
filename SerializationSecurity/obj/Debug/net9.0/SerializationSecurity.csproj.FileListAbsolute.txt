@@ -1,0 +1,14 @@
+C:\Users\ZAIN BAIG\Desktop\.net practice\SerializationSecurity\bin\Debug\net9.0\SerializationSecurity.exe
+C:\Users\ZAIN BAIG\Desktop\.net practice\SerializationSecurity\bin\Debug\net9.0\SerializationSecurity.deps.json
+C:\Users\ZAIN BAIG\Desktop\.net practice\SerializationSecurity\bin\Debug\net9.0\SerializationSecurity.runtimeconfig.json
+C:\Users\ZAIN BAIG\Desktop\.net practice\SerializationSecurity\bin\Debug\net9.0\SerializationSecurity.dll
+C:\Users\ZAIN BAIG\Desktop\.net practice\SerializationSecurity\bin\Debug\net9.0\SerializationSecurity.pdb
+C:\Users\ZAIN BAIG\Desktop\.net practice\SerializationSecurity\obj\Debug\net9.0\SerializationSecurity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ZAIN BAIG\Desktop\.net practice\SerializationSecurity\obj\Debug\net9.0\SerializationSecurity.AssemblyInfoInputs.cache
+C:\Users\ZAIN BAIG\Desktop\.net practice\SerializationSecurity\obj\Debug\net9.0\SerializationSecurity.AssemblyInfo.cs
+C:\Users\ZAIN BAIG\Desktop\.net practice\SerializationSecurity\obj\Debug\net9.0\SerializationSecurity.csproj.CoreCompileInputs.cache
+C:\Users\ZAIN BAIG\Desktop\.net practice\SerializationSecurity\obj\Debug\net9.0\SerializationSecurity.dll
+C:\Users\ZAIN BAIG\Desktop\.net practice\SerializationSecurity\obj\Debug\net9.0\refint\SerializationSecurity.dll
+C:\Users\ZAIN BAIG\Desktop\.net practice\SerializationSecurity\obj\Debug\net9.0\SerializationSecurity.pdb
+C:\Users\ZAIN BAIG\Desktop\.net practice\SerializationSecurity\obj\Debug\net9.0\SerializationSecurity.genruntimeconfig.cache
+C:\Users\ZAIN BAIG\Desktop\.net practice\SerializationSecurity\obj\Debug\net9.0\ref\SerializationSecurity.dll

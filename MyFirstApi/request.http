@@ -1,0 +1,14 @@
+GET http://localhost:5174/WeatherForecast
+
+###
+
+POST http://localhost:5174/WeatherForecast
+
+###
+
+PUT  http://localhost:5174/WeatherForecast/1
+
+
+###
+
+DELETE  http://localhost:5174/WeatherForecast/1

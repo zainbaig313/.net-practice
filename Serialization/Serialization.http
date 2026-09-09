@@ -1,0 +1,18 @@
+@Serialization_HostAddress = http://localhost:5176
+
+GET {{Serialization_HostAddress}}/api/s
+Accept: application/json
+
+###
+GET {{Serialization_HostAddress}}/api/s/manual-json
+Accept: application/json
+
+###
+GET {{Serialization_HostAddress}}/api/s/custom-json
+Accept: application/json
+
+### 
+GET {{Serialization_HostAddress}}/api/s/xml
+Accept: application/json
+
+### 
