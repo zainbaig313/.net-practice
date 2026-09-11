@@ -1,0 +1,24 @@
+@MiddleWare_HostAddress = http://localhost:5238
+
+GET {{MiddleWare_HostAddress}}/
+Accept: application/json
+
+###
+POST  {{MiddleWare_HostAddress}}/
+Content-Type: application/json
+
+
+{
+    "title": "this is 3 title",
+    "body": "this is 3 body"
+}
+
+###
+POST  {{MiddleWare_HostAddress}}/
+Content-Type: application/json
+API-KEY: password
+
+{
+    "title": "this is 3 title",
+    "body": "this is 3 body"
+}
