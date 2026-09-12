@@ -1,41 +1,59 @@
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.OpenApi;
+using Swashbuckle.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
 // Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+
+builder.Services.AddControllers();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+var books =  new List<Item>{
+        new Item {Id = 1 , Title = "book1"},
+        new Item {Id = 22 , Title = "book2"}
+    };
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 
-var summaries = new[]
+app.MapGet("/getAllBook" , () =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    return Results.Ok(books);
+});
 
-app.MapGet("/weatherforecast", () =>
+
+app.MapGet("/getBookById/{id}" ,Results<Ok<Item>, NotFound> (int id) =>
+{   
+    var item = books.FirstOrDefault(i=> i.Id==id);
+    if(item == null)
+    {
+        return TypedResults.NotFound();
+    }
+    return TypedResults.Ok(item);
+}).WithOpenApi(operation =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+    operation.Parameters[0].Description = "this is the id of the book";
+    operation.Summary = "Get single Blog";
+    operation.Description = " return a single blog";
+    return operation;
+});
+
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+
