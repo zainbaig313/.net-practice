@@ -3,9 +3,20 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 using System.Collections.Generic;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
+
+// Global error handling middleware
+app.UseExceptionHandler(errorApp =>
+{
+    errorApp.Run(async context =>
+    {
+        context.Response.StatusCode = 500;
+        await context.Response.WriteAsJsonAsync(new { error = "An unexpected error occurred." });
+    });
+});
 
 // In-memory storage with pre-filled data
 var users = new List<User>
@@ -18,21 +29,23 @@ var users = new List<User>
 var nextId = users.Max(u => u.Id) + 1;
 
 // GET: /users
-app.MapGet("/users", () =>
-{
-    return Results.Ok(users);
-});
+app.MapGet("/users", () => Results.Ok(users));
 
 // GET: /users/{id}
 app.MapGet("/users/{id}", (int id) =>
 {
+    if (id <= 0) return Results.BadRequest(new { error = "Invalid user ID." });
     var user = users.FirstOrDefault(u => u.Id == id);
-    return user is not null ? Results.Ok(user) : Results.NotFound();
+    return user is not null ? Results.Ok(user) : Results.NotFound(new { error = "User not found." });
 });
 
 // POST: /users
 app.MapPost("/users", (User newUser) =>
 {
+    var validationResults = ValidateUser(newUser);
+    if (validationResults.Any())
+        return Results.BadRequest(new { errors = validationResults });
+
     newUser.Id = nextId++;
     users.Add(newUser);
     return Results.Created($"/users/{newUser.Id}", newUser);
@@ -41,8 +54,14 @@ app.MapPost("/users", (User newUser) =>
 // PUT: /users/{id}
 app.MapPut("/users/{id}", (int id, User updatedUser) =>
 {
+    if (id <= 0) return Results.BadRequest(new { error = "Invalid user ID." });
+
     var user = users.FirstOrDefault(u => u.Id == id);
-    if (user is null) return Results.NotFound();
+    if (user is null) return Results.NotFound(new { error = "User not found." });
+
+    var validationResults = ValidateUser(updatedUser);
+    if (validationResults.Any())
+        return Results.BadRequest(new { errors = validationResults });
 
     user.Name = updatedUser.Name;
     user.Email = updatedUser.Email;
@@ -50,12 +69,22 @@ app.MapPut("/users/{id}", (int id, User updatedUser) =>
 
     return Results.NoContent();
 });
+// Helper: Validate User
+List<string> ValidateUser(User user)
+{
+    var results = new List<ValidationResult>();
+    var context = new ValidationContext(user);
+    Validator.TryValidateObject(user, context, results, true);
+    return results.Select(r => r.ErrorMessage).ToList();
+}
 
 // DELETE: /users/{id}
 app.MapDelete("/users/{id}", (int id) =>
 {
+    if (id <= 0) return Results.BadRequest(new { error = "Invalid user ID." });
+
     var user = users.FirstOrDefault(u => u.Id == id);
-    if (user is null) return Results.NotFound();
+    if (user is null) return Results.NotFound(new { error = "User not found." });
 
     users.Remove(user);
     return Results.NoContent();
@@ -65,8 +94,16 @@ app.Run();
 
 public class User
 {
-    public int Id { get; set; }          // Unique identifier
-    public string Name { get; set; }     // Full name
-    public string Email { get; set; }    // Email address
-    public string Department { get; set; } // HR or IT
+    public int Id { get; set; }
+
+    [Required, MinLength(3)]
+    public string Name { get; set; }
+
+    [Required, EmailAddress]
+    public string Email { get; set; }
+
+    [Required]
+    [RegularExpression("^(HR|IT)$", ErrorMessage = "Department must be HR or IT.")]
+    public string Department { get; set; }
 }
+
