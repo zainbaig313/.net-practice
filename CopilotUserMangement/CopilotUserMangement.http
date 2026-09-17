@@ -1,32 +1,64 @@
-### Get all users
+### 1. Test Error Handling (invalid endpoint)
+GET http://localhost:5281/invalid-endpoint
+
+###
+
+### 2. Test Authentication - No Token (should fail)
 GET http://localhost:5281/users
-Accept: application/json
 
-### Get user by ID
-GET http://localhost:5281/users/9
-Accept: application/json
+###
 
-### Create a new user
+### 3. Test Authentication - Valid Token
+GET http://localhost:5281/users
+Authorization: valid-token
+
+###
+
+### 4. Test Logging Middleware (valid token, single user)
+GET http://localhost:5281/users/1
+Authorization: valid-token
+
+###
+
+### 5. Test Validation Errors (invalid payload)
 POST http://localhost:5281/users
+Authorization: valid-token
 Content-Type: application/json
 
 {
-  "name": "Ethan Brown",
-  "email": "ethan.brown@techhive.com",
+  "name": "",
+  "email": "not-an-email",
+  "department": "Finance"
+}
+
+###
+
+### 6. Test Create User (valid payload)
+POST http://localhost:5281/users
+Authorization: valid-token
+Content-Type: application/json
+
+{
+  "name": "Eva Green",
+  "email": "eva.green@techhive.com",
   "department": "HR"
 }
 
-### Update an existing user
-PUT http://localhost:5281/users/2
+###
+
+### 7. Test Update User (valid payload)
+PUT http://localhost:5281/users/1
+Authorization: valid-token
 Content-Type: application/json
 
 {
-  "id": 2,
-  "name": "Bob Smith Updated",
-  "email": "bob.smith.updated@techhive.com",
+  "name": "Alice Johnson Updated",
+  "email": "alice.updated@techhive.com",
   "department": "IT"
 }
 
-### Delete a user
-DELETE http://localhost:5281/users/3
-Accept: application/json
+###
+
+### 8. Test Delete User (non-existent user)
+DELETE http://localhost:5281/users/99
+Authorization: valid-token

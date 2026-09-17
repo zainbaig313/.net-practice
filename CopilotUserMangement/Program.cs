@@ -8,6 +8,10 @@ using System.ComponentModel.DataAnnotations;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
+app.UseMiddleware<ErrorHandlingMiddleware>(); // 1. Error handling
+app.UseMiddleware<AuthMiddleware>();          // 2. Authentication
+app.UseMiddleware<LoggingMiddleware>();  
+
 // Global error handling middleware
 app.UseExceptionHandler(errorApp =>
 {
@@ -107,3 +111,69 @@ public class User
     public string Department { get; set; }
 }
 
+public class ErrorHandlingMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    public ErrorHandlingMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        try
+        {
+            await _next(context);
+        }
+        catch (Exception)
+        {
+            context.Response.StatusCode = 500;
+            context.Response.ContentType = "application/json";
+            await context.Response.WriteAsJsonAsync(new { error = "Internal server error." });
+        }
+    }
+}
+public class AuthMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    public AuthMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        var token = context.Request.Headers["Authorization"].FirstOrDefault();
+
+        if (string.IsNullOrEmpty(token) || token != "valid-token")
+        {
+            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+            await context.Response.WriteAsJsonAsync(new { error = "Unauthorized" });
+            return;
+        }
+
+        await _next(context);
+    }
+}
+public class LoggingMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    public LoggingMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        var method = context.Request.Method;
+        var path = context.Request.Path;
+
+        await _next(context);
+
+        var statusCode = context.Response.StatusCode;
+        Console.WriteLine($"[{DateTime.Now}] {method} {path} => {statusCode}");
+    }
+}
