@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace DbFirstEfCore.Models;
+
+public partial class Team
+{
+    public int TeamId { get; set; }
+
+    public string? Name { get; set; }
+
+    public string DateCreated { get; set; } = null!;
+}
