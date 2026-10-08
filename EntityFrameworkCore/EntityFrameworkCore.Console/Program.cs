@@ -52,3 +52,40 @@ var context = new FootballLeagueDbContext();
 // // count wiht the wildcard
 
 // var countwithWildCard = await context.Teams.CountAsync(q=>EF.Functions.Like(q.Name , "%drid%"));
+
+
+// //group by
+// var groupedItems  = context.Teams
+//  //           .Where(q => q.Name == "realmadrid") //transalte into Where 
+//             .GroupBy(q=>q.DateCreated.Date)
+//             .Where( q=>q.Count()>2);   //translate into having class 
+
+//  foreach (var item in groupedItems)
+//  {
+//     // Console.WriteLine(item.Key);
+//     foreach (var team in item)
+//     {
+//         Console.WriteLine(team.Name);
+//     }
+//  }
+
+//orderby 
+var ascorder = await context.Teams
+            .OrderBy( q=> q.Name)
+            .ToListAsync();
+
+
+foreach (var item in ascorder)
+{
+    Console.WriteLine(item.Name);
+}
+Console.WriteLine("--------------------------------------");
+var desccorder = await context.Teams
+            .OrderByDescending( q=> q.Name)
+            .ToListAsync();
+
+
+foreach (var item in desccorder)
+{
+    Console.WriteLine(item.Name);
+}
