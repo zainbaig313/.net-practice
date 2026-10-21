@@ -195,3 +195,67 @@ var context = new FootballLeagueDbContext();
 // {
 //     Console.WriteLine($"team name are {teams.Name}");
 // }
+
+
+
+
+///////////////////////////saving data in the ef core using single entery object , multiople oobject or trought batch save .
+
+
+//////adding using the single object .
+
+// var coach = new Coach
+// {
+//     Name = "jose marinio",
+//     DateCreated = DateTime.Now
+
+// };
+
+//now that we have created the object with new enteries lets add it into the table/entnies we have and the save it nito data base .
+
+// await context.Coaches.AddAsync(coach);
+// await context.SaveChangesAsync();
+
+
+/////////////using the list of entieres
+// var coach = new Coach
+// {
+//     Name = "jose marinio",
+//     DateCreated = DateTime.Now
+
+// };
+// var coach1 = new Coach
+// {
+//     Name = "jose marinio",
+//     DateCreated = DateTime.Now
+
+// };
+List<Coach> coachlist  =  new List<Coach>
+{
+    // coach,
+    // coach1     / we can also add the coachlists here by giving it objects or we can creat new objects as well .
+
+    new Coach {Name = "shakil" , DateCreated = DateTime.Now},
+    new Coach {Name = "wali"   , DateCreated = DateTime.Now}
+};
+
+// foreach (var item in coachlist)
+// {
+//     await context.Coaches.AddAsync(item);
+//    // await  context.SaveChangesAsync();// writting it here means one entery save and then move to next and save if one go bad no roll back .
+// }
+
+//   await context.SaveChangesAsync();  //wrting it afteer it means all or nothing .
+//   //
+//   //
+//   //
+
+
+// batch save can be dont using one line  .
+
+await context.Coaches.AddRangeAsync(coachlist); // this wil add  the enteris .
+
+Console.WriteLine(context.ChangeTracker.DebugView.LongView);  // show destial log debug view whats happnig before the savechanges .
+await context.SaveChangesAsync();
+Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+
