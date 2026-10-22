@@ -253,9 +253,33 @@ List<Coach> coachlist  =  new List<Coach>
 
 // batch save can be dont using one line  .
 
-await context.Coaches.AddRangeAsync(coachlist); // this wil add  the enteris .
+// await context.Coaches.AddRangeAsync(coachlist); // this wil add  the enteris .
 
-Console.WriteLine(context.ChangeTracker.DebugView.LongView);  // show destial log debug view whats happnig before the savechanges .
-await context.SaveChangesAsync();
-Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+// Console.WriteLine(context.ChangeTracker.DebugView.LongView);  // show destial log debug view whats happnig before the savechanges .
+// await context.SaveChangesAsync();
+// Console.WriteLine(context.ChangeTracker.DebugView.LongView);
 
+
+
+// updating the data in the data base
+// we can do it by tracking and no tracking .
+
+//with tracking 
+
+// var coach =await  context.Coaches.FindAsync(7);
+// coach.Name = "kalali";
+// await context.SaveChangesAsync();
+
+//with no tracking we need to add one more line .
+// var coach1 = await context.Coaches
+//             .AsNoTracking()
+//             .FirstAsync(p=>p.Id==7);
+// coach1.Name = "saving with no tracking ";
+
+// Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+// context.Update(coach1);
+
+// Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+// await context.SaveChangesAsync();
+
+// Console.WriteLine(context.ChangeTracker.DebugView.LongView);
