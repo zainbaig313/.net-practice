@@ -1,0 +1,14 @@
+@EmailDemo_HostAddress = http://localhost:5133
+
+POST  {{EmailDemo_HostAddress}}/api/email/send
+Accept: application/json
+Content-Type: application/json
+
+
+{
+  "recipient": "axfb021@gmail.com",
+  "subject": "Welcome to My Application",
+  "body": "Hello! This email was sent using my reusable .NET email service."
+}
+  
+###

@@ -283,3 +283,18 @@ List<Coach> coachlist  =  new List<Coach>
 // await context.SaveChangesAsync();
 
 // Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+
+
+
+
+//deleteing the ef core entiety 
+// var coach  = await context.Coaches.FindAsync(7);
+// if (coach == null ) return;
+// Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+// context.Coaches.Remove(coach);
+// Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+// await context.SaveChangesAsync();
+
+
+//// delet but with in a single line and not safe   //Execute delet and execute update query is same 
+// var coach = await context.Coaches.Select(p=>p.Name == "zain").ExecuteDeleteAsync();
