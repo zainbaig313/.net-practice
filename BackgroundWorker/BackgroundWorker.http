@@ -1,0 +1,18 @@
+@BackgroundWorker_HostAddress = http://localhost:5073
+
+POST  {{BackgroundWorker_HostAddress}}/api/BackgroundWorker
+Accept: application/json
+
+###
+POST  {{BackgroundWorker_HostAddress}}/api/BackgroundWorker/delay
+Accept: application/json
+
+###
+POST  {{BackgroundWorker_HostAddress}}/api/BackgroundWorker/Recurring
+Accept: application/json
+
+###
+POST  {{BackgroundWorker_HostAddress}}/api/BackgroundWorker/continue
+Accept: application/json
+
+###
