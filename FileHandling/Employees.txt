@@ -1,0 +1,6 @@
+101, Ali, Developer, 80000
+102, Ahmed, Designer, 70000
+103, Hamza, Manager, 120000
+104, Usman, Developer, 85000
+105, Bilal, Tester
+106, Hassan, Developer, ABC

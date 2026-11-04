@@ -6,7 +6,7 @@ Content-Type: application/json
 
 
 {
-  "recipient": "axfb021@gmail.com",
+  "recipient": "xxx@xxx.test",
   "subject": "Welcome to My Application",
   "body": "Hello! This email was sent using my reusable .NET email service."
 }
