@@ -61,48 +61,12 @@ public class EmailService : IEmailService
 
 
 
-        // if (client.Capabilities.HasFlag(SmtpCapabilities.Dsn))
-        // {
-        //     Console.WriteLine("DSN is supported!");
-        // }
-        // else
-        // {
-        //     Console.WriteLine("DSN is NOT supported!");
-        // }
-       await CheckBounceEmails();
+        
+      
         var response = await client.SendAsync(message);
         Console.WriteLine(response);
         await client.DisconnectAsync(true);
     }
-    public async Task CheckBounceEmails()
-    {
-
-        var senderEmail = _config["Email:SenderEmail"];
-        var imapHost = _config["Email:ImapHost"];
-        var imapPort = _config.GetValue<int>("Email:ImapPort");
-        var appPassword = _config["Email:AppPassword"];
-
-
-        using var client = new ImapClient();
-
-        await client.ConnectAsync(
-            imapHost,
-            imapPort,
-            SecureSocketOptions.SslOnConnect
-        );
-
-        await client.AuthenticateAsync(
-            senderEmail,
-            appPassword
-        );
-
-        var inbox = client.Inbox;
-
-        await inbox.OpenAsync(FolderAccess.ReadOnly);
-
-        Console.WriteLine($"Total Emails: {inbox.Count}");
-
-        await client.DisconnectAsync(true);
-    }
+    
 }
 

@@ -11,4 +11,7 @@
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
 </ItemGroup>
+<ItemGroup>
+  <PackageReference Include="CsvHelper" Version="34.0.0" />
+</ItemGroup>
 </Project>
