@@ -1,0 +1,10 @@
+@LocalAI.API_HostAddress = http://localhost:5269
+
+POST  http://localhost:5269/api/ai/chat
+Accept: application/json
+Content-Type: application/json
+
+{
+    "prompt" : "What is DI in C#"
+}
+###
