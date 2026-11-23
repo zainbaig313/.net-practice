@@ -14,7 +14,7 @@ public class AiController : ControllerBase
     }
 
     [HttpPost("chat")]
-    public async Task<ActionResult<ChatResponceDto>> Chat(ChatRequestDto request)
+    public async Task<ActionResult<ChatResponseDto>> Chat(ChatRequestDto request)
     {
         var result  = await _aiService.GetResponseAsync(request);
 
